@@ -128,7 +128,7 @@ svg.call(tip);
 svg.call(node_tip);
 node.on('mouseover', node_tip.show)
       .on('mouseout', node_tip.hide);
-      
+
 link.on('mouseover', tip.show)
       .on('mouseout', tip.hide);
 
@@ -147,23 +147,36 @@ link.on('mouseover', tip.show)
 
   var cscale = d3.scale.category10();
 
-  if (params.color == 'source')
+  if (params.coloring == "data_defined")
   {
-  d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-      return cscale(d.source.name);
-    });
+    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+        return d.source.color);
+      });
+    d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
+        return d.color;
+      }).style('stroke', 'none');
   }
 
-  else 
+  else
   {
-  d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-      return cscale(d.target.name);
-    });
-  }
+    if (params.color == 'source')
+    {
+    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+        return cscale(d.source.name);
+      });
+    }
 
-  d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
-      return cscale(d.name);
-    }).style('stroke', 'none');
+    else 
+    {
+    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+        return cscale(d.target.name);
+      });
+    }
+
+    d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
+        return cscale(d.name);
+      }).style('stroke', 'none');
+  }
 
 </script>
 
