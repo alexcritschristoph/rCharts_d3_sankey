@@ -114,14 +114,14 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return eval("'<strong>Frequency:</strong> <span style=\\'color:red\\'>' + ' to ' + '\\n' + format(d.value) + '</span>'");
+    return eval(params.link_hover_html);
   })
 
 var node_tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return eval("'<strong>Frequency:</strong> <span style=\\'color:red\\'>' + d.name + '\\n' + format(d.value) + '</span>'");
+    return eval(params.node_hover_html);
   })
 
 svg.call(tip);
