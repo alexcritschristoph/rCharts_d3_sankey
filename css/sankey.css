@@ -30,3 +30,28 @@ http://bost.ocks.org/mike/sankey/
 svg {
   font: 10px sans-serif;
 }
+
+[tooltip]:before {
+    /* needed - do not touch */
+    content: attr(tooltip);
+    position: absolute;
+    opacity: 0;
+    
+    /* customizable */
+    transition: all 0.1s ease;
+    padding: 5px;
+    color: white;
+    box-shadow: 2px 2px 1px silver;    
+}
+
+[tooltip]:hover:before {
+    /* needed - do not touch */
+    opacity: 0.8;
+    
+    /* customizable */
+    background: black;
+}
+
+[tooltip]:not([tooltip-persistent]):before {
+    pointer-events: none;
+}
