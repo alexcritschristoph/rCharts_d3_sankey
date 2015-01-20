@@ -150,7 +150,7 @@ link.on('mouseover', tip.show)
   if (params.coloring == "data_defined")
   {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        return d.source.color);
+        return d.source.color;
       });
     d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
         return d.color;
