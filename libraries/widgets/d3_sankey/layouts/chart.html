@@ -117,8 +117,11 @@ var tip = d3.tip()
     return "<strong>Frequency:</strong> <span style='color:red'>" + d.source.name + " → " + d.target.name + "\n" + format(d.value); + "</span>";
   })
 
-link.call(tip);
+svg.call(tip);
 
+link.on('mouseover', tip.show)
+      .on('mouseout', tip.hide);
+      
 // the function for moving the nodes
   function dragmove(d) {
     d3.select(this).attr("transform", 
