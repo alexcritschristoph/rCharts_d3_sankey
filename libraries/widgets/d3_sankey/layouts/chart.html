@@ -114,7 +114,7 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return eval("'<strong>Frequency:</strong> <span style=\\'color:red\\'>' + 'test' + ' to ' + 'test' + '\\n' + format(d.value) + '</span>'");
+    return eval("'<strong>Frequency:</strong> <span style=\\'color:red\\'>' + ' to ' + '\\n' + format(d.value) + '</span>'");
   })
 
 var node_tip = d3.tip()
