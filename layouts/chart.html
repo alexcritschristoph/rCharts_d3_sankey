@@ -120,4 +120,25 @@ node.append("text")
         link.attr("d", path);
   }
 })();
+
+  var cscale = d3.scale.category10();
+
+  if (params.color == 'source')
+  {
+  d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+      return cscale(d.source.name);
+    });
+  }
+
+  else 
+  {
+  d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+      return cscale(d.target.name);
+    });
+  }
+
+  d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
+      return cscale(d.name);
+    }).style('stroke', 'none');
+
 </script>
