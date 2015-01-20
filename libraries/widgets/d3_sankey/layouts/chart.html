@@ -126,8 +126,8 @@ var node_tip = d3.tip()
 
 svg.call(tip);
 svg.call(node_tip);
-node.on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+node.on('mouseover', node_tip.show)
+      .on('mouseout', node_tip.hide);
       
 link.on('mouseover', tip.show)
       .on('mouseout', tip.hide);
