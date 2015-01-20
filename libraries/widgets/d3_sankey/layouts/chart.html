@@ -108,6 +108,17 @@ node.append("text")
   .attr("x", 6 + sankey.nodeWidth())
   .attr("text-anchor", "start");
 
+
+//tooltips
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Frequency:</strong> <span style='color:red'>" + return d.source.name + " → " + d.target.name + "\n" + format(d.value); + "</span>";
+  })
+
+link.call(tip);
+
 // the function for moving the nodes
   function dragmove(d) {
     d3.select(this).attr("transform", 
