@@ -149,12 +149,22 @@ link.on('mouseover', tip.show)
 
   if (params.coloring == "data_defined")
   {
+    if (params.color == 'source')
+    {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        return d.source.color;
-        alert(d.source.color);
+        return cscale(d.source.category);
       });
+    }
+
+    else 
+    {
+    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+        return cscale(d.target.category);
+      });
+    }
+
     d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
-        return d.color;
+        return cscale(d.category);
       }).style('stroke', 'none');
   }
 
