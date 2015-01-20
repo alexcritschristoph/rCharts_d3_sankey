@@ -79,11 +79,6 @@ var link = svg.append("g").selectAll(".link")
 link.append("title")
   .text(function (d) { return d.source.name + " → " + d.target.name + "\n" + format(d.value); });
 
-link.attr("tooltip")
-  .text(function (d) { return d.source.name + " → " + d.target.name + "\n" + format(d.value); });
- 
-link.attr("tooltip-persistent");
-
 var node = svg.append("g").selectAll(".node")
   .data(nodes)
 .enter().append("g")
