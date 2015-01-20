@@ -147,29 +147,6 @@ link.on('mouseover', tip.show)
 
   var cscale = d3.scale.category10();
 
-  if (params.coloring == "data_defined")
-  {
-    if (params.color == 'source')
-    {
-    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        return cscale(d.source.category);
-      });
-    }
-
-    else 
-    {
-    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        return cscale(d.target.category);
-      });
-    }
-
-    d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
-        return cscale(d.category);
-      }).style('stroke', 'none');
-  }
-
-  else
-  {
     if (params.color == 'source')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
@@ -187,7 +164,6 @@ link.on('mouseover', tip.show)
     d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
         return cscale(d.name);
       }).style('stroke', 'none');
-  }
 
 </script>
 
