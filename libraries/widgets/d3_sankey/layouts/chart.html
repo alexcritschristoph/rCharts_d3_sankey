@@ -145,15 +145,12 @@ link.on('mouseover', tip.show)
   }
 })();
 
-  var cscale = d3.scale.category10();
-    if (typeof params.color != "undefined")
-    {
-      alert("not there");
-    }
-    else
-    {
-      alert("there");
-    }
+  
+    console.log(params);
+    if(params['color.palette'] == "none") { var cscale = d3.scale.category10(); }
+
+    
+    //Source Node or Target node coloring for links
     if (params.color == 'source')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
