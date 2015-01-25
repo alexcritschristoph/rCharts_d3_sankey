@@ -162,7 +162,7 @@ link.on('mouseover', tip.show)
     }
 
     d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
-        return cscale(d.name);
+        return cscale(d['name']);
       }).style('stroke', 'none');
 
 </script>
