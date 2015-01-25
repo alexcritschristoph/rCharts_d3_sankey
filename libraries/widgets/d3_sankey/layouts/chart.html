@@ -146,7 +146,14 @@ link.on('mouseover', tip.show)
 })();
 
   var cscale = d3.scale.category10();
-
+    if (typeof params.color != "undefined")
+    {
+      alert("not there");
+    }
+    else
+    {
+      alert("there");
+    }
     if (params.color == 'source')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
