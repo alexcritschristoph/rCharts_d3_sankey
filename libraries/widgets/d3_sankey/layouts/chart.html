@@ -47,7 +47,7 @@ data.source.forEach(function (d, i) {
     console.log(data[params['color.factor']][i]);
     console.log("***");
     nodes.push({ "name": data.source[i], "color": data[params['color.factor']][i]});
-    nodes.push({ "name": data.target[i]});
+    nodes.push({ "name": data.target[i], "color": data[params['color.factor']][i]});
     }
     else
     {
