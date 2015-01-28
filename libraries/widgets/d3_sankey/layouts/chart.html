@@ -147,7 +147,7 @@ link.on('mouseover', tip.show)
 
     
     console.log(params);
-    if(params['color.palette'] == "none") 
+    if(typeof params['color.palette'] == "undefined") 
       { 
         var cscale = d3.scale.category10(); 
       }
