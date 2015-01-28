@@ -39,6 +39,8 @@ var data = params.data,
 //will reduce to unique in the next step
 //also get links in object form
 data.source.forEach(function (d, i) {
+    console.log(data);
+    console.log(data['color.factor']);
     nodes.push({ "name": data.source[i], "color": data['color.factor'][i]});
     nodes.push({ "name": data.target[i], "color": data['color.factor'][i]});
     links.push({ "source": data.source[i], "target": data.target[i], "value": +data.value[i] });
