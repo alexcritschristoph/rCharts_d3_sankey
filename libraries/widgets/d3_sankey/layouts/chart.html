@@ -147,8 +147,14 @@ link.on('mouseover', tip.show)
 
     
     console.log(params);
-    if(params['color.palette'] == "none") { var cscale = d3.scale.category10(); }
-
+    if(params['color.palette'] == "none") 
+      { 
+        var cscale = d3.scale.category10(); 
+      }
+    else
+      {
+        var cscale = d3.scale.ordinal().range(color.palette);
+      }
     //Source Node or Target node coloring for links
     if (params.color == 'source')
     {
