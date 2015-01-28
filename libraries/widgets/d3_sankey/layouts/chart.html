@@ -99,6 +99,11 @@ nodes.forEach(function (d, i) {
       {
         color = item['color'];
         nodes[i]['color'] = color;
+        //Assign other variables
+        Object.keys(item).forEach(function(key) {
+            console.log(key, obj[key]);
+        });
+
       }
     });
 
