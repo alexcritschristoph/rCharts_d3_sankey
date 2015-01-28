@@ -41,7 +41,9 @@ var data = params.data,
 data.source.forEach(function (d, i) {
     console.log("***");
     console.log(data);
+    console.log("factor:");
     console.log(params['color.factor']);
+    console.log("data:");
     console.log(data[params['color.factor']]);
     nodes.push({ "name": data.source[i], "color": data['color.factor'][i]});
     nodes.push({ "name": data.target[i], "color": data['color.factor'][i]});
