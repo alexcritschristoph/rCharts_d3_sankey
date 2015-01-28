@@ -41,13 +41,21 @@ var data = params.data,
 data.source.forEach(function (d, i) {
 
     //If factor doesn't exist, factor is just the name.
-    if(typeof params['color.factor'] != "undefined") 
+    if(typeof params['source.color.factor'] != "undefined") 
     {
-    console.log(data.source[i]);
-    console.log(data[params['color.factor']][i]);
-    console.log("***");
-    nodes.push({ "name": data.source[i], "color": data[params['color.factor']][i]});
-    nodes.push({ "name": data.target[i], "color": data[params['color.factor']][i]});
+      console.log(data.source[i]);
+      console.log(data[params['source.color.factor']][i]);
+      console.log("***");
+      nodes.push({ "name": data.source[i], "color": data[params['source.color.factor']][i]});
+      if(typeof params['target.color.factor'] != "undefined") 
+      {
+        nodes.push({ "name": data.target[i], "color": data[params['target.color.factor']][i]});
+      }
+      else
+      {
+        nodes.push({ "name": data.target[i], "color": data[params['source.color.factor']][i]});
+      }
+
     }
     else
     {
@@ -192,7 +200,7 @@ link.on('mouseover', tip.show)
     if (params.color == 'source')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        if(typeof params['color.factor'] != "undefined") 
+        if(typeof params['source.color.factor'] != "undefined") 
         {
           console.log("###");
           console.log(d.source);
@@ -210,7 +218,7 @@ link.on('mouseover', tip.show)
     else 
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        if(typeof params['color.factor'] != "undefined") 
+        if(typeof params['source.color.factor'] != "undefined") 
         {
           return cscale(d.target.color);          
         }
@@ -222,7 +230,7 @@ link.on('mouseover', tip.show)
     }
 
     d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
-        if(typeof params['color.factor'] != "undefined") 
+        if(typeof params['source.color.factor'] != "undefined") 
         {
           return cscale(d['color']);          
         }
