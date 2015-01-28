@@ -92,14 +92,16 @@ console.log(nodes);
 //now loop through each nodes to make nodes an array of objects rather than an array of strings
 nodes.forEach(function (d, i) {
     var color = "";
+    nodes[i] = { "name" : d };
     nodes_copy.forEach(function (item, i)
     {
       if (d == item['name'])
       {
         color = item['color'];
+        nodes[i]['color'] = color;
       }
     });
-    nodes[i] = { "name": d, "color": color};
+
 });
 
 console.log("Step 4");
