@@ -89,8 +89,9 @@ nodes.forEach(function (d, i) {
       if (d == item['name'])
       {
         color = item['color'];
+        break;
       }
-    }
+    });
     nodes[i] = { "name": d, "color": color};
 });
 
