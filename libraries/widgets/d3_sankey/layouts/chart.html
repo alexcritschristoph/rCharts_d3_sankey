@@ -44,14 +44,14 @@ data.source.forEach(function (d, i) {
     if(typeof params['color.factor'] != "undefined") 
     {
     nodes.push({ "name": data.source[i], "color": data[params['color.factor']][i]});
-    nodes.push({ "name": data.target[i], "color": data[params['color.factor']][i]});
+   // nodes.push({ "name": data.target[i], "color": data[params['color.factor']][i]});
     }
     else
     {
     nodes.push({ "name": data.source[i] });
     nodes.push({ "name": data.target[i] });
-
     }
+
     links.push({ "source": data.source[i], "target": data.target[i], "value": +data.value[i] });
 }); 
 
