@@ -153,7 +153,7 @@ link.on('mouseover', tip.show)
       }
     else
       {
-        var cscale = d3.scale.ordinal().range([ "#FF0000", "#009933", "#0000FF" ]);
+        var cscale = d3.scale.category10(); 
         console.log(cscale);
       }
     //Source Node or Target node coloring for links
