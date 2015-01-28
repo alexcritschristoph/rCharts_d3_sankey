@@ -153,14 +153,12 @@ link.on('mouseover', tip.show)
       }
     else
       {
-        var cscale = d3.scale.ordinal().range(params.color.palette);
-        console.log(params.color.palette);
+        var cscale = d3.scale.ordinal().range(params['color.palette']);
       }
     //Source Node or Target node coloring for links
     if (params.color == 'source')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        console.log(d);
         return cscale(d.source.name);
       });
     }
