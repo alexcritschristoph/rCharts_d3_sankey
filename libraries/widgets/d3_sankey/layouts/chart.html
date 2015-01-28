@@ -175,6 +175,10 @@ link.on('mouseover', tip.show)
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
         if(typeof params['color.factor'] != "undefined") 
         {
+          console.log("###");
+          console.log(d.source);
+          console.log(d.source.color);
+          console.log(cscale(d.source.color));
           return cscale(d.source.color);          
         }
         else
