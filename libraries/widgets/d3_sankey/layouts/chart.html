@@ -145,15 +145,15 @@ link.on('mouseover', tip.show)
   }
 })();
 
-  
+    
     console.log(params);
     if(params['color.palette'] == "none") { var cscale = d3.scale.category10(); }
 
-    
     //Source Node or Target node coloring for links
     if (params.color == 'source')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+        console.log(d);
         return cscale(d.source.name);
       });
     }
