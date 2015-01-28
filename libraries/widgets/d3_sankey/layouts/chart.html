@@ -61,9 +61,14 @@ data.source.forEach(function (d, i) {
 //now get nodes based on links data
 //thanks Mike Bostock https://groups.google.com/d/msg/d3-js/pl297cFtIQk/Eso4q_eBu1IJ
 //this handy little function returns only the distinct / unique nodes
+console.log("Step 1");
+console.log(nodes);
 nodes = d3.keys(d3.nest()
                 .key(function (d) { return d.name; })
                 .map(nodes));
+
+console.log("Step 2");
+console.log(nodes);
 
 //it appears d3 with force layout wants a numeric source and target
 //so loop through each link replacing the text with its index from node
@@ -72,10 +77,16 @@ links.forEach(function (d, i) {
     links[i].target = nodes.indexOf(links[i].target);
 });
 
+console.log("Step 3");
+console.log(nodes);
+
 //now loop through each nodes to make nodes an array of objects rather than an array of strings
 nodes.forEach(function (d, i) {
     nodes[i] = { "name": d };
 });
+
+console.log("Step 4");
+console.log(nodes);
 
 sankey
   .nodes(nodes)
