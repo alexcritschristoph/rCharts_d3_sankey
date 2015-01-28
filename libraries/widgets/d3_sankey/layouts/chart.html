@@ -66,14 +66,11 @@ data.source.forEach(function (d, i) {
     //Basic info
     var link_add = { "source": data.source[i], "target": data.target[i], "value": +data.value[i] }
     //Add all possible link info.
-    console.log(data);
-    console.log(data[i]);
-    data[i].forEach(function(key) {
+    Object.keys(data).forEach(function(key) {
       if (key != "source" && key != "target" && key != "value")
       {
-        link_add[key] = d[key];
+        link_add[key] = data[key][i];
       }
-      console.log(key, d[key]);
     });
 
     links.push(link_add);
