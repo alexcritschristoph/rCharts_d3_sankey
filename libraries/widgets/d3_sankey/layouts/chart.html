@@ -79,16 +79,17 @@ data.source.forEach(function (d, i) {
 //now get nodes based on links data
 //thanks Mike Bostock https://groups.google.com/d/msg/d3-js/pl297cFtIQk/Eso4q_eBu1IJ
 //this handy little function returns only the distinct / unique nodes
-console.log("Step 1");
+/*console.log("Step 1");
 console.log(nodes);
+*/
 var nodes_copy = nodes;
 nodes = d3.keys(d3.nest()
                 .key(function (d) { return d.name; })
                 .map(nodes));
 
-console.log("Step 2");
+/*console.log("Step 2");
 console.log(nodes);
-
+*/
 //it appears d3 with force layout wants a numeric source and target
 //so loop through each link replacing the text with its index from node
 links.forEach(function (d, i) {
@@ -96,9 +97,9 @@ links.forEach(function (d, i) {
     links[i].target = nodes.indexOf(links[i].target);
 });
 
-console.log("Step 3");
+/*console.log("Step 3");
 console.log(nodes);
-
+*/
 //now loop through each nodes to make nodes an array of objects rather than an array of strings
 nodes.forEach(function (d, i) {
     var color = "";
@@ -114,10 +115,10 @@ nodes.forEach(function (d, i) {
     });
 
 });
-
+/*
 console.log("Step 4");
 console.log(nodes);
-
+*/
 sankey
   .nodes(nodes)
   .links(links)
@@ -200,8 +201,9 @@ link.on('mouseover', tip.show)
 })();
 
     
-    console.log(params);
-    if(typeof params['color.palette'] == "undefined") 
+/*    console.log(params);
+*/    
+      if(typeof params['color.palette'] == "undefined") 
       { 
         var cscale = d3.scale.category10(); 
       }
@@ -210,25 +212,7 @@ link.on('mouseover', tip.show)
         var cscale = d3.scale.ordinal().range(params['color.palette']);
       }
     //Source Node or Target node coloring for links
-    if (params.color == 'source')
-    {
-    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        if(typeof params['source.color.factor'] != "undefined") 
-        {
-          console.log("###");
-          console.log(d.source);
-          console.log(d.source.color);
-          console.log(cscale(d.source.color));
-          return cscale(d.source.color);          
-        }
-        else
-        {
-          return cscale(d.source.name);          
-        }
-      });
-    }
-
-    else 
+    if (params.color == 'target')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
         if(typeof params['source.color.factor'] != "undefined") 
@@ -238,6 +222,21 @@ link.on('mouseover', tip.show)
         else
         {
           return cscale(d.target.name);          
+        }
+      });
+    }
+
+    else 
+    {
+    d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
+        console.log(d);
+        if(typeof params['source.color.factor'] != "undefined") 
+        {
+          return cscale(d.source.color);          
+        }
+        else
+        {
+          return cscale(d.source.name);          
         }
       });
     }
