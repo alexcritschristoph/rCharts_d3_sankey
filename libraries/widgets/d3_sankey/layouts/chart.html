@@ -43,9 +43,10 @@ data.source.forEach(function (d, i) {
     //If factor doesn't exist, factor is just the name.
     if(typeof params['source.color.factor'] != "undefined") 
     {
-      console.log(data.source[i]);
+/*      console.log(data.source[i]);
       console.log(data[params['source.color.factor']][i]);
       console.log("***");
+*/      
       nodes.push({ "name": data.source[i], "color": data[params['source.color.factor']][i]});
       if(typeof params['target.color.factor'] != "undefined") 
       {
@@ -229,7 +230,6 @@ link.on('mouseover', tip.show)
     else 
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        console.log(d);
         if(typeof params['source.color.factor'] != "undefined") 
         {
           return cscale(d.source.color);          
@@ -251,6 +251,8 @@ link.on('mouseover', tip.show)
           return cscale(d['name']);          
         }
       }).style('stroke', 'none');
-
+    //change div size
+    document.getElementById("#{{ chartId }}").style.width= "{{params.width}}px";
+    document.getElementById("#{{ chartId }}").style.height= "{{params.height}}px";
 </script>
 
