@@ -19,7 +19,7 @@ if(params.labelFormat){
   formatNumber = d3.format(".2%");
 }
 
-var svg = d3.select('#' + params.id).append("svg")
+var {{ chartId }}_svg = d3.select('#' + params.id).append("svg")
     .attr("width", params.width)
     .attr("height", params.height);
     
@@ -125,7 +125,7 @@ sankey
   .links(links)
   .layout(params.layout);
   
-var link = svg.append("g").selectAll(".link")
+var link = {{ chartId }}_svg.append("g").selectAll(".link")
   .data(links)
 .enter().append("path")
   .attr("class", "link")
@@ -136,7 +136,7 @@ var link = svg.append("g").selectAll(".link")
 /*link.append("title")
   .text(function (d) { return d.source.name + " → " + d.target.name   + "\n" + format(d.value); });
 */
-var node = svg.append("g").selectAll(".node")
+var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .data(nodes)
 .enter().append("g")
   .attr("class", "node")
@@ -180,7 +180,6 @@ var {{ chartId }}_node_tip = d3.tip()
     return eval(params.node_hover_html);
   });
 
-var {{ chartId }}_svg = svg;
 {{ chartId }}_svg.call({{ chartId }}_tip);
 {{ chartId }}_svg.call({{ chartId }}_node_tip);
 
