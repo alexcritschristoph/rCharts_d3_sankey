@@ -166,22 +166,18 @@ node.append("text")
 
 
 //tooltips
-var tip = d3.tip()
+svg.call(d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return eval(params.link_hover_html);
-  })
-
-var node_tip = d3.tip()
+  }));
+svg.call(d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return eval(params.node_hover_html);
-  })
-
-svg.call(tip);
-svg.call(node_tip);
+  }));
 node.on('mouseover', node_tip.show)
       .on('mouseout', node_tip.hide);
 
@@ -252,7 +248,5 @@ link.on('mouseover', tip.show)
         }
       }).style('stroke', 'none');
     //change div size
-    document.getElementById("{{ chartId }}").style.width= "{{params.width}}px";
-    document.getElementById("{{ chartId }}").style.height= "{{params.height}}px";
 </script>
 
