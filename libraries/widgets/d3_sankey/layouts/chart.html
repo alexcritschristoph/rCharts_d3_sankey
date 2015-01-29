@@ -180,12 +180,16 @@ var {{ chartId }}_node_tip = d3.tip()
     return eval(params.node_hover_html);
   });
 
-svg.call({{ chartId }}_tip);
-svg.call({{ chartId }}_node_tip);
-node.on('mouseover', {{ chartId }}_node_tip.show)
+var {{ chartId }}_svg = svg;
+{{ chartId }}_svg.call({{ chartId }}_tip);
+{{ chartId }}_svg.call({{ chartId }}_node_tip);
+
+var {{ chartId }}_node = node;
+{{ chartId }}_node.on('mouseover', {{ chartId }}_node_tip.show)
       .on('mouseout', {{ chartId }}_node_tip.hide);
 
-link.on('mouseover', {{ chartId }}_tip.show)
+var {{ chartId }}_link = link;
+{{ chartId }}_link.on('mouseover', {{ chartId }}_tip.show)
       .on('mouseout', {{ chartId }}_tip.hide);
 
 // the function for moving the nodes
