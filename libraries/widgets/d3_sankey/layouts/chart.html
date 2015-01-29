@@ -166,23 +166,27 @@ node.append("text")
 
 
 //tooltips
-svg.call(d3.tip()
+var {{ chartId }}_tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return eval(params.link_hover_html);
-  }));
-svg.call(d3.tip()
+  });
+
+var {{ chartId }}_node_tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return eval(params.node_hover_html);
-  }));
-node.on('mouseover', node_tip.show)
-      .on('mouseout', node_tip.hide);
+  });
 
-link.on('mouseover', tip.show)
-      .on('mouseout', tip.hide);
+svg.call({{ chartId }}_tip);
+svg.call({{ chartId }}_node_tip);
+node.on('mouseover', {{ chartId }}_node_tip.show)
+      .on('mouseout', {{ chartId }}_node_tip.hide);
+
+link.on('mouseover', {{ chartId }}_tip.show)
+      .on('mouseout', {{ chartId }}_tip.hide);
 
 // the function for moving the nodes
   function dragmove(d) {
