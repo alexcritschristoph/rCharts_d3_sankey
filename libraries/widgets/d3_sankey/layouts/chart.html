@@ -64,6 +64,21 @@ data.source.forEach(function (d, i) {
     nodes.push({ "name": data.target[i] });
     }
 
+    //If 3 column layout is included
+    if (typeof {{ chartId }}_params['source.3column'] != "undefined" && typeof {{ chartId }}_params['target.3column'] != "undefined")
+    {
+      nodes.forEach(function (item, k)
+      {
+        if (d == data.source[i])
+        {
+          nodes[k]['column'] = {{ chartId }}_params['source.3column'][i];
+        }
+        else if (d == data.target[i])
+        {
+          nodes[k]['column'] = {{ chartId }}_params['target.3column'][i];
+        } 
+      }
+    }
     //Basic info
     var link_add = { "source": data.source[i], "target": data.target[i], "value": +data.value[i] }
     //Add all possible link info.
@@ -104,6 +119,7 @@ console.log(nodes);
 //now loop through each nodes to make nodes an array of objects rather than an array of strings
 nodes.forEach(function (d, i) {
     var color = "";
+    var column = "";
     nodes[i] = { "name" : d };
     nodes_copy.forEach(function (item, k)
     {
@@ -112,6 +128,8 @@ nodes.forEach(function (d, i) {
         color = item['color'];
         nodes[i]['color'] = color;
 
+        column = item['column'];
+        nodes[i]['column'] = column;
       }
     });
 
