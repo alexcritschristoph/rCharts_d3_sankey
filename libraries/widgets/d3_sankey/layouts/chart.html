@@ -139,6 +139,10 @@ var link = {{ chartId }}_svg.append("g").selectAll(".link")
 */
 
 console.log(nodes);
+console.log(typeof nodes);
+//Get three column positions.
+//Assign each node to correct position, if not already in it.
+
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .data(nodes)
 .enter().append("g")
