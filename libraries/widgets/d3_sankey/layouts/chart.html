@@ -194,6 +194,10 @@ for (var nod in nodes)
         if (y_start < nodes[nd].y + nodes[nd].dy || y_end > nodes[nod].y)
         {
           console.log("FOUND OVERLAPPING");
+          console.log(y_start);
+          console.log(y_end);
+          console.log(nodes[nd].y);
+          console.log(nodes[nd].y + nodes[nd].dy);
           console.log(nodes[nod]);
           console.log(nodes[nd]);
           console.log("***");
