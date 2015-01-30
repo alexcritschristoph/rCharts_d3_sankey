@@ -65,17 +65,17 @@ data.source.forEach(function (d, i) {
     }
 
     //If 3 column layout is included
-    if (typeof {{ chartId }}_params['source.3column'] != "undefined" && typeof {{ chartId }}_params['target.3column'] != "undefined")
+    if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
     {
       nodes.forEach(function (item, k)
       {
         if (d == data.source[i])
         {
-          nodes[k]['column'] = {{ chartId }}_params['source.3column'][i];
+          nodes[k]['column'] = {{ chartId }}_params['source.column'][i];
         }
         else if (d == data.target[i])
         {
-          nodes[k]['column'] = {{ chartId }}_params['target.3column'][i];
+          nodes[k]['column'] = {{ chartId }}_params['target.column'][i];
         } 
       });
     }
@@ -135,7 +135,7 @@ nodes.forEach(function (d, i) {
 
 });
 
-if (typeof {{ chartId }}_params['source.3column'] != "undefined" && typeof {{ chartId }}_params['target.3column'] != "undefined")
+if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
 {
   console.log(nodes);
 }
