@@ -4,34 +4,34 @@ Mike Bostock http://bost.ocks.org/mike/sankey/
 -->
 
 <script>
-var params = {{{ chartParams }}};
+var {{ chartId }}_params = {{{ chart{{ chartId }}_params }}};
 
 (function(){
 
-params.units ? units = " " + params.units : units = "";
+{{ chartId }}_params.units ? units = " " + {{ chartId }}_params.units : units = "";
 
 //hard code these now but eventually make available
 var formatNumber = d3.format("0,.0f"),    // zero decimal places
     format = function(d) { return formatNumber(d) + units; },
     color = d3.scale.category20();
 
-if(params.labelFormat){
+if({{ chartId }}_params.labelFormat){
   formatNumber = d3.format(".2%");
 }
 
-var {{ chartId }}_svg = d3.select('#' + params.id).append("svg")
-    .attr("width", params.width)
-    .attr("height", params.height);
+var {{ chartId }}_svg = d3.select('#' + {{ chartId }}_params.id).append("svg")
+    .attr("width", {{ chartId }}_params.width)
+    .attr("height", {{ chartId }}_params.height);
     
 var sankey = d3.sankey()
-    .nodeWidth(params.nodeWidth)
-    .nodePadding(params.nodePadding)
-    .layout(params.layout)
-    .size([params.width,params.height-20]);
+    .nodeWidth({{ chartId }}_params.nodeWidth)
+    .nodePadding({{ chartId }}_params.nodePadding)
+    .layout({{ chartId }}_params.layout)
+    .size([{{ chartId }}_params.width,{{ chartId }}_params.height-20]);
     
 var path = sankey.link();
     
-var data = params.data,
+var data = {{ chartId }}_params.data,
     links = [],
     nodes = [];
     
@@ -41,20 +41,20 @@ var data = params.data,
 data.source.forEach(function (d, i) {
 
     //If factor doesn't exist, factor is just the name.
-    if(typeof params['source.color.factor'] != "undefined") 
+    if(typeof {{ chartId }}_params['source.color.factor'] != "undefined") 
     {
 /*      console.log(data.source[i]);
-      console.log(data[params['source.color.factor']][i]);
+      console.log(data[{{ chartId }}_params['source.color.factor']][i]);
       console.log("***");
 */      
-      nodes.push({ "name": data.source[i], "color": data[params['source.color.factor']][i]});
-      if(typeof params['target.color.factor'] != "undefined") 
+      nodes.push({ "name": data.source[i], "color": data[{{ chartId }}_params['source.color.factor']][i]});
+      if(typeof {{ chartId }}_params['target.color.factor'] != "undefined") 
       {
-        nodes.push({ "name": data.target[i], "color": data[params['target.color.factor']][i]});
+        nodes.push({ "name": data.target[i], "color": data[{{ chartId }}_params['target.color.factor']][i]});
       }
       else
       {
-        nodes.push({ "name": data.target[i], "color": data[params['source.color.factor']][i]});
+        nodes.push({ "name": data.target[i], "color": data[{{ chartId }}_params['source.color.factor']][i]});
       }
 
     }
@@ -123,7 +123,7 @@ console.log(nodes);
 sankey
   .nodes(nodes)
   .links(links)
-  .layout(params.layout);
+  .layout({{ chartId }}_params.layout);
   
 var link = {{ chartId }}_svg.append("g").selectAll(".link")
   .data(links)
@@ -160,7 +160,7 @@ node.append("text")
   .attr("text-anchor", "end")
   .attr("transform", null)
   .text(function (d) { return d.name; })
-.filter(function (d) { return d.x < params.width / 2; })
+.filter(function (d) { return d.x < {{ chartId }}_params.width / 2; })
   .attr("x", 6 + sankey.nodeWidth())
   .attr("text-anchor", "start");
 
@@ -170,14 +170,14 @@ var {{ chartId }}_tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return eval(params.link_hover_html);
+    return eval({{ chartId }}_params.link_hover_html);
   });
 
 var {{ chartId }}_node_tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return eval(params.node_hover_html);
+    return eval({{ chartId }}_params.node_hover_html);
   });
 
 {{ chartId }}_svg.call({{ chartId }}_tip);
@@ -195,9 +195,9 @@ var {{ chartId }}_link = link;
   function dragmove(d) {
     d3.select(this).attr("transform", 
         "translate(" + (
-                   d.x = Math.max(0, Math.min(params.width - d.dx, d3.event.x))
+                   d.x = Math.max(0, Math.min({{ chartId }}_params.width - d.dx, d3.event.x))
                 ) + "," + (
-                   d.y = Math.max(0, Math.min(params.height - d.dy, d3.event.y))
+                   d.y = Math.max(0, Math.min({{ chartId }}_params.height - d.dy, d3.event.y))
                 ) + ")");
         sankey.relayout();
         link.attr("d", path);
@@ -205,21 +205,21 @@ var {{ chartId }}_link = link;
 })();
 
     
-/*    console.log(params);
+/*    console.log({{ chartId }}_params);
 */    
-      if(typeof params['color.palette'] == "undefined") 
+      if(typeof {{ chartId }}_params['color.palette'] == "undefined") 
       { 
         var cscale = d3.scale.category10(); 
       }
     else
       {
-        var cscale = d3.scale.ordinal().range(params['color.palette']);
+        var cscale = d3.scale.ordinal().range({{ chartId }}_params['color.palette']);
       }
     //Source Node or Target node coloring for links
-    if (params.color == 'target')
+    if ({{ chartId }}_params.color == 'target')
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        if(typeof params['source.color.factor'] != "undefined") 
+        if(typeof {{ chartId }}_params['source.color.factor'] != "undefined") 
         {
           return cscale(d.target.color);          
         }
@@ -233,7 +233,7 @@ var {{ chartId }}_link = link;
     else 
     {
     d3.selectAll('#{{ chartId }} svg path.link').style('stroke', function(d){
-        if(typeof params['source.color.factor'] != "undefined") 
+        if(typeof {{ chartId }}_params['source.color.factor'] != "undefined") 
         {
           return cscale(d.source.color);          
         }
@@ -245,7 +245,7 @@ var {{ chartId }}_link = link;
     }
 
     d3.selectAll('#{{ chartId }} svg .node rect').style('fill', function(d){
-        if(typeof params['source.color.factor'] != "undefined") 
+        if(typeof {{ chartId }}_params['source.color.factor'] != "undefined") 
         {
           return cscale(d['color']);          
         }
