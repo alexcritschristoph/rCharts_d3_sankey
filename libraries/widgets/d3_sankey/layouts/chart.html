@@ -182,11 +182,27 @@ for (var nod in nodes)
   {
     nodes[nod].x = medium;
     link.attr("d", path);
+    y_start = nodes[nod].y;
+    y_end = nodes[nod].y + nodes[nod].dy;
+
+    //make sure it isn't touching another node.
+    for (var nd in nodes)
+    {
+      //if it is in the same column
+      if (nodes[nod]['color'] == nodes[nd]['color'])
+      {
+        if (y_start < nodes[nd].y + nodes[nd].dy || y_end > nodes[nod].y)
+        {
+          console.log("FOUND OVERLAPPING");
+        }
+      }
+    }
   }
   else if (nodes[nod]['color'] == "Gene")
   {
     nodes[nod].x = large;
     link.attr("d", path);
+    //
   }  
 }
 
