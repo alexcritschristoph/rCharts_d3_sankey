@@ -146,6 +146,7 @@ var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .on("dragstart", function () { this.parentNode.appendChild(this); })
   .on("drag", dragmove));
 
+console.log(node);
 node.append("rect")
   .attr("height", function (d) { return d.dy; })
   .attr("width", sankey.nodeWidth())
