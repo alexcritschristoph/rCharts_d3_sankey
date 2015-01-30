@@ -139,7 +139,7 @@ var link = {{ chartId }}_svg.append("g").selectAll(".link")
 */
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .data(nodes)
-.enter().append("g")
+.enter()
   .attr("class", "node")
   .attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
 .call(d3.behavior.drag()
@@ -150,6 +150,8 @@ var node = {{ chartId }}_svg.append("g").selectAll(".node")
 node.attr("x", function(d){
   d.x = 5;
   console.log(d.x);})
+
+node.enter().append("g");
 
 console.log(node);
 node.append("rect")
