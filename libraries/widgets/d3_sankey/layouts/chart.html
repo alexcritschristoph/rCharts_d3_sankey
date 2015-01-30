@@ -183,7 +183,6 @@ for (var nod in nodes)
 
     if (nodes[nod].x != medium){
       nodes[nod].x = medium;
-      link.attr("d", path);
       y_start = nodes[nod].y;
       y_end = nodes[nod].y + nodes[nod].dy;
 
@@ -221,6 +220,7 @@ for (var nod in nodes)
         }
       }
     }
+      link.attr("d", path);    
   }
   else if (nodes[nod]['color'] == "Gene")
   {
