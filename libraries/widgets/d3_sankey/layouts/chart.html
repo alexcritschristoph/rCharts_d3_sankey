@@ -125,6 +125,7 @@ sankey
   .links(links)
   .layout({{ chartId }}_params.layout);
   
+
 var link = {{ chartId }}_svg.append("g").selectAll(".link")
   .data(links)
 .enter().append("path")
@@ -146,6 +147,9 @@ var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .on("dragstart", function () { this.parentNode.appendChild(this); })
   .on("drag", dragmove));
 
+node.attr("x", function(d){
+  console.log(d);
+});
 console.log(node);
 node.append("rect")
   .attr("height", function (d) { return d.dy; })
