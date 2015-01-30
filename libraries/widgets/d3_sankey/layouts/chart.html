@@ -148,7 +148,7 @@ var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .on("drag", dragmove));
 
 node.attr("x", function(d){
-  console.log(d);
+  d.x = 5;
 });
 console.log(node);
 node.append("rect")
