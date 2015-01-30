@@ -5,6 +5,5 @@ d3_horizon:
     css:
       - "http://timelyportfolio.github.io/rCharts_d3_sankey/css/sankey.css"
     jshead: 
-      - "http://d3js.org/d3.v3.min.js"
       - "http://timelyportfolio.github.io/rCharts_d3_sankey/js/sankey.js"
       - "http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"
