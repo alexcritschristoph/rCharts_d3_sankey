@@ -120,7 +120,7 @@ nodes.forEach(function (d, i) {
 console.log("Step 4");
 console.log(nodes);
 */
-sankey
+sankeyfor
   .nodes(nodes)
   .links(links)
   .layout({{ chartId }}_params.layout);
@@ -176,14 +176,17 @@ for (var nod in nodes)
   if (nodes[nod]['color'] == "Microbe")
   {
     nodes[nod].x = small;
+    link.attr("d", path);
   }
   else if (nodes[nod]['color'] == "Compound")
   {
     nodes[nod].x = medium;
+    link.attr("d", path);
   }
   else if (nodes[nod]['color'] == "Gene")
   {
     nodes[nod].x = large;
+    link.attr("d", path);
   }  
 }
 
