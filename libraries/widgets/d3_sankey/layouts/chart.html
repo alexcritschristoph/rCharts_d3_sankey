@@ -138,6 +138,8 @@ var link = {{ chartId }}_svg.append("g").selectAll(".link")
   .text(function (d) { return d.source.name + " → " + d.target.name   + "\n" + format(d.value); });
 */
 
+console.log(nodes);
+console.log(typeof nodes);
 
 //Set to 3 columns
 //Get smallest, largest, and first medium x values
@@ -185,10 +187,6 @@ for (var nod in nodes)
     nodes[nod].x = large;
   }
 }
-
-console.log(nodes);
-console.log(typeof nodes);
-
 
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .data(nodes)
