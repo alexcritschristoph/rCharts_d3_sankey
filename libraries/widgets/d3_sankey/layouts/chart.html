@@ -180,27 +180,33 @@ for (var nod in nodes)
   }
   else if (nodes[nod]['color'] == "Compound")
   {
-    nodes[nod].x = medium;
-    link.attr("d", path);
-    y_start = nodes[nod].y;
-    y_end = nodes[nod].y + nodes[nod].dy;
 
-    //make sure it isn't touching another node.
-    for (var nd in nodes)
-    {
-      //if it is in the same column
-      if (nodes[nod]['color'] == nodes[nd]['color'])
+    if (nodes[nod].x != medium){
+      nodes[nod].x = medium;
+      link.attr("d", path);
+      y_start = nodes[nod].y;
+      y_end = nodes[nod].y + nodes[nod].dy;
+
+      //make sure it isn't touching another node.
+      for (var nd in nodes)
       {
-        if (y_start < nodes[nd].y + nodes[nd].dy || y_end > nodes[nod].y)
+        //if it is in the same column
+        if (nodes[nod]['color'] == nodes[nd]['color'])
         {
-          console.log("FOUND OVERLAPPING");
-          console.log(y_start);
-          console.log(y_end);
-          console.log(nodes[nd].y);
-          console.log(nodes[nd].y + nodes[nd].dy);
-          console.log(nodes[nod]);
-          console.log(nodes[nd]);
-          console.log("***");
+          if (nodes[nod]['name'] != nodes[nd]['name'])
+          {
+            if ((y_start < nodes[nd].y + nodes[nd].dy && y_end > nodes[nod].y) || (y_start < nodes[nd].y && y_end > nodes[nd].y)
+            {
+              console.log("FOUND OVERLAPPING");
+              console.log(y_start);
+              console.log(y_end);
+              console.log(nodes[nd].y);
+              console.log(nodes[nd].y + nodes[nd].dy);
+              console.log(nodes[nod]);
+              console.log(nodes[nd]);
+              console.log("***");
+            }
+          }
         }
       }
     }
