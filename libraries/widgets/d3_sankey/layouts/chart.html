@@ -139,8 +139,55 @@ var link = {{ chartId }}_svg.append("g").selectAll(".link")
 */
 
 console.log(nodes);
-//Get three column positions.
-//Assign each node to correct position, if not already in it.
+console.log(typeof nodes);
+
+//Set to 3 columns
+//Get smallest, largest, and first medium x values
+var small = 100000;
+var large = 0;
+var medium = 0;
+for (var nod in nodes)
+{
+  var x = nodes[nod]['x'];
+  if (x < small) {
+    small = x;
+  }
+  if (x > large) {
+    large = x;
+  }
+}
+for (var nod in nodes)
+{
+  var x = nodes[nod]['x'];
+  if (x > small && x < large)
+  {
+    medium = x;
+    break;
+  }
+}
+console.log("***");
+console.log(small);
+console.log(medium);
+console.log(large);
+console.log("***");
+
+for (var nod in nodes)
+{
+  if (nodes[nod]['color'] == "Microbe")
+  {
+    nodes[nod].x = small;
+  }
+  else if (nodes[nod]['color'] == "Compound")
+  {
+    nodes[nod].x = medium;
+  }
+  else if (nodes[nod]['color'] == "Gene")
+  {
+    nodes[nod].x = large;
+  }  
+}
+
+//Assign each node to one of three positions, if it's not already in it.
 
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .data(nodes)
