@@ -137,10 +137,10 @@ var link = {{ chartId }}_svg.append("g").selectAll(".link")
 /*link.append("title")
   .text(function (d) { return d.source.name + " → " + d.target.name   + "\n" + format(d.value); });
 */
+
+console.log(nodes);
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
-  .data(nodes).attr("x", function(d){
-  d.x = 5;
-  console.log(d.x);})
+  .data(nodes)
 .enter().append("g")
   .attr("class", "node")
   .attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; })
@@ -149,7 +149,6 @@ var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .on("dragstart", function () { this.parentNode.appendChild(this); })
   .on("drag", dragmove));
 
-console.log(node);
 node.append("rect")
   .attr("height", function (d) { return d.dy; })
   .attr("width", sankey.nodeWidth())
