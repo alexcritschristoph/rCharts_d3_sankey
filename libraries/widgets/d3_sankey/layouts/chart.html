@@ -142,12 +142,35 @@ console.log(nodes);
 console.log(typeof nodes);
 
 //Set to 3 columns
+//Get smallest, largest, and first medium x values
+var small = 100000;
+var large = 0;
+var medium = 0;
 for (var nod in nodes)
 {
-  nodes[nod]['x'] = 5;
+  var x = nodes[nod]['x'];
+  if (x < small) {
+    small = x;
+  }
+  if (x > large) {
+    large = x;
+  }
 }
-//Get three column positions.
-//Assign each node to correct position, if not already in it.
+for (var nod in nodes)
+{
+  var x = nodes[nod]['x'];
+  if (x > small && x < large)
+  {
+    medium = x;
+    break;
+  }
+}
+console.log("***").
+console.log(small);
+console.log(medium);
+console.log(large);
+console.log("***");
+//Assign each node to one of three positions, if it's not already in it.
 
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
   .data(nodes)
