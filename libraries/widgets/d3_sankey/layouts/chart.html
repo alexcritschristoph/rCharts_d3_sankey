@@ -215,8 +215,13 @@ for (var nod in nodes)
         //if it is in the same column
         if (nodes[nod]['column'] == nodes[nd]['column'])
         {
+          console.log("found in same column")
+          console.log(nodes[nd]['name']);
           if (nodes[nod]['name'] != nodes[nd]['name'])
           {
+            console.log(nodes[nd]['name']);
+            console.log("is not the same as ");
+            console.log(nodes[nod]['name']);
             if ((y_start < nodes[nd].y && y_end > nodes[nd].y) || (y_start < nodes[nd].y + nodes[nd].dy && y_end > nodes[nd].y + nodes[nd].dy))
             {
 
