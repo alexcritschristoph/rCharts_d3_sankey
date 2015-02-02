@@ -226,7 +226,7 @@ for (var nod in nodes)
             {
 
               //Move upwards
-              if (y_start < nodes[nd].y && y_end > nodes[nd].y)
+              if (y_start < nodes[nd].y && y_end > nodes[nd].y || (y_start > nodes[nd].y && y_end < nodes[nd].y + nodes[nd].dy))
               {
                 console.log("MOVED UP ".concat(nodes[nod]['name']));
                 nodes[nod].y = nodes[nd].y - nodes[nod].dy - 10;
