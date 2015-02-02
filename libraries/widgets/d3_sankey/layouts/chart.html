@@ -193,10 +193,7 @@ if (medium == small)
 {
   medium = (small + large) / 2;
 }
-console.log(small)
-console.log(medium)
-console.log(large)
-console.log("***");
+
 for (var nod in nodes)
 {
   if (nodes[nod]['column'] == 1)
@@ -226,11 +223,13 @@ for (var nod in nodes)
               //Move upwards
               if (y_start < nodes[nd].y && y_end > nodes[nd].y)
               {
+                console.log("MOVED UP ".concat(nodes[nod]['name']));
                 nodes[nod].y = nodes[nd].y - nodes[nod].dy - 10;
               }
               else 
               {
               //Move downwards
+                console.log("MOVED DOWN ".concat(nodes[nod]['name']));
                 nodes[nod].y = nodes[nd].y + nodes[nd].dy + 10;  
               }
             }
