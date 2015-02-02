@@ -267,6 +267,7 @@ for (var nod in nodes)
         .entries(nodes)
         .map(function(d) { return d.values; });
     size = [1, 1];
+    nodePadding = 8;
     initializeNodeDepth();
     resolveCollisions();
     var iterations = 100;
