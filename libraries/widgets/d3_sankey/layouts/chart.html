@@ -67,7 +67,6 @@ data.source.forEach(function (d, i) {
     //If 3 column layout is included
     if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
     {
-      console.log("***got here");
       nodes.forEach(function (item, k)
       {
         if (nodes[k]['name'] == data.source[i])
@@ -78,7 +77,6 @@ data.source.forEach(function (d, i) {
         {
           nodes[k]['column'] = data[{{ chartId }}_params['target.column']][i];
         }
-        console.log(nodes[k]['column']);
       });
     }
     //Basic info
