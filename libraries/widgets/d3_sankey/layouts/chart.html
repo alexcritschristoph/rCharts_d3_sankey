@@ -72,11 +72,11 @@ data.source.forEach(function (d, i) {
       {
         if (d == data.source[i])
         {
-          nodes[k]['column'] = {{ chartId }}_params['source.column'][i];
+          nodes[k]['column'] = data[{{ chartId }}_params['source.column']][i];
         }
         else if (d == data.target[i])
         {
-          nodes[k]['column'] = {{ chartId }}_params['target.column'][i];
+          nodes[k]['column'] = data[{{ chartId }}_params['target.column']][i];
         } 
         console.log(nodes[k]['column']);
       });
