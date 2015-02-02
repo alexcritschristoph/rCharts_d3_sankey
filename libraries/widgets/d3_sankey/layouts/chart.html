@@ -67,6 +67,7 @@ data.source.forEach(function (d, i) {
     //If 3 column layout is included
     if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
     {
+      console.log("***got here");
       nodes.forEach(function (item, k)
       {
         if (d == data.source[i])
@@ -77,6 +78,7 @@ data.source.forEach(function (d, i) {
         {
           nodes[k]['column'] = {{ chartId }}_params['target.column'][i];
         } 
+        console.log(nodes[k]['column']);
       });
     }
     //Basic info
@@ -92,8 +94,6 @@ data.source.forEach(function (d, i) {
     links.push(link_add);
 }); 
 
-console.log("***");
-console.log(nodes);
 //now get nodes based on links data
 //thanks Mike Bostock https://groups.google.com/d/msg/d3-js/pl297cFtIQk/Eso4q_eBu1IJ
 //this handy little function returns only the distinct / unique nodes
