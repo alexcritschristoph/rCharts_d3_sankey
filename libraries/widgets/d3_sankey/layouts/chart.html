@@ -96,8 +96,6 @@ data.source.forEach(function (d, i) {
 
 if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
 {
-  console.log("1***");
-  console.log(nodes);
 }
 
 //now get nodes based on links data
@@ -143,11 +141,11 @@ nodes.forEach(function (d, i) {
 
 });
 
-if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
+/*if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
 {
   console.log("2***");
   console.log(nodes);
-}
+}*/
 sankey
   .nodes(nodes)
   .links(links)
@@ -166,8 +164,8 @@ var link = {{ chartId }}_svg.append("g").selectAll(".link")
   .text(function (d) { return d.source.name + " → " + d.target.name   + "\n" + format(d.value); });
 */
 
-console.log(typeof nodes);
-
+/*console.log(typeof nodes);
+*/
 //Set to 3 columns
 //Get smallest, largest, and first medium x values
 var small = 100000;
