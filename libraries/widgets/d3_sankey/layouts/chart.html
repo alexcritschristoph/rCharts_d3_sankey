@@ -70,14 +70,14 @@ data.source.forEach(function (d, i) {
       console.log("***got here");
       nodes.forEach(function (item, k)
       {
-        if (d == data.source[i])
+        if (nodes[k]['name'] == data.source[i])
         {
           nodes[k]['column'] = data[{{ chartId }}_params['source.column']][i];
         }
-        else if (d == data.target[i])
+        else if (nodes[k]['name'] == data.target[i])
         {
           nodes[k]['column'] = data[{{ chartId }}_params['target.column']][i];
-        } 
+        }
         console.log(nodes[k]['column']);
       });
     }
