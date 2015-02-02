@@ -94,6 +94,12 @@ data.source.forEach(function (d, i) {
     links.push(link_add);
 }); 
 
+if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
+{
+  console.log("1***");
+  console.log(nodes);
+}
+
 //now get nodes based on links data
 //thanks Mike Bostock https://groups.google.com/d/msg/d3-js/pl297cFtIQk/Eso4q_eBu1IJ
 //this handy little function returns only the distinct / unique nodes
@@ -139,6 +145,7 @@ nodes.forEach(function (d, i) {
 
 if (typeof {{ chartId }}_params['source.column'] != "undefined" && typeof {{ chartId }}_params['target.column'] != "undefined")
 {
+  console.log("2***");
   console.log(nodes);
 }
 sankey
