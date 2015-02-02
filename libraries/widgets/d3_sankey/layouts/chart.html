@@ -206,49 +206,7 @@ for (var nod in nodes)
 
     if (nodes[nod].x != medium){
       nodes[nod].x = medium;
-      y_start = nodes[nod].y;
-      y_end = nodes[nod].y + nodes[nod].dy;
 
-      //make sure it isn't touching another node.
-      for (var nd in nodes)
-      {
-        //if it is in the same column
-        if (nodes[nod]['column'] == nodes[nd]['column'])
-        {
-          console.log("found in same column")
-          console.log(nodes[nd]['name']);
-          if (nodes[nod]['name'] != nodes[nd]['name'])
-          {
-            console.log(nodes[nd]['name']);
-            console.log("is not the same as ");
-            console.log(nodes[nod]['name']);
-            if ((y_start < nodes[nd].y && y_end > nodes[nd].y) || (y_start > nodes[nd].y && y_end < nodes[nd].y + nodes[nd].dy) || (y_start < nodes[nd].y + nodes[nd].dy && y_end > nodes[nd].y + nodes[nd].dy))
-            {
-
-              //Move upwards
-              if (y_start < nodes[nd].y && y_end > nodes[nd].y || (y_start > nodes[nd].y && y_end < nodes[nd].y + nodes[nd].dy))
-              {
-                console.log("MOVED UP ".concat(nodes[nod]['name']));
-                //only move if no longer touching any node.
-                for (var nd2 in nodes)
-                {
-                  if (nodes[nod]['name'] != nodes[nd]['name'])
-              {
-                }
-                nodes[nod].y = nodes[nd].y - nodes[nod].dy - 10;
-                break;
-              }
-              else 
-              {
-              //Move downwards
-                console.log("MOVED DOWN ".concat(nodes[nod]['name']));
-                nodes[nod].y = nodes[nd].y + nodes[nd].dy + 10; 
-                break; 
-              }
-            }
-          }
-        }
-      }
     }
       link.attr("d", path);    
   }
