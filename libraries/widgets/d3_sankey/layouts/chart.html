@@ -186,12 +186,12 @@ for (var nod in nodes)
 
 for (var nod in nodes)
 {
-  if (nodes[nod]['color'] == "Microbe")
+  if (nodes[nod]['column'] == "Microbe")
   {
     nodes[nod].x = small;
     link.attr("d", path);
   }
-  else if (nodes[nod]['color'] == "Compound")
+  else if (nodes[nod]['column'] == "Compound")
   {
 
     if (nodes[nod].x != medium){
@@ -203,7 +203,7 @@ for (var nod in nodes)
       for (var nd in nodes)
       {
         //if it is in the same column
-        if (nodes[nod]['color'] == nodes[nd]['color'])
+        if (nodes[nod]['column'] == nodes[nd]['column'])
         {
           if (nodes[nod]['name'] != nodes[nd]['name'])
           {
@@ -227,7 +227,7 @@ for (var nod in nodes)
     }
       link.attr("d", path);    
   }
-  else if (nodes[nod]['color'] == "Gene")
+  else if (nodes[nod]['column'] == "Gene")
   {
     nodes[nod].x = large;
     link.attr("d", path);
