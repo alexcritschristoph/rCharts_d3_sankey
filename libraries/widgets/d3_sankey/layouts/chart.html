@@ -266,6 +266,7 @@ for (var nod in nodes)
         .sortKeys(d3.ascending)
         .entries(nodes)
         .map(function(d) { return d.values; });
+    size = [1, 1];
     initializeNodeDepth();
     resolveCollisions();
     var iterations = 100;
