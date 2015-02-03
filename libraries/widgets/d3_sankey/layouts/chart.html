@@ -8,11 +8,11 @@ var {{ chartId }}_params = {{{ chartParams }}};
 
 (function(){
 
-{{ chartId }}_params.units ? units = " " + {{ chartId }}_params.units : units = "";
+{{ chartId }}_params.units ? {{ chartId }}_units = " " + {{ chartId }}_params.units : {{ chartId }}_units = "";
 
 //hard code these now but eventually make available
 var formatNumber = d3.format("0,.0f"),    // zero decimal places
-    format = function(d) { return formatNumber(d) + units; },
+    format = function(d) { return formatNumber(d) + {{ chartId }}_units; },
     color = d3.scale.category20();
 
 if({{ chartId }}_params.labelFormat){
@@ -223,6 +223,12 @@ for (var node in nodes)
 {
   if (nodes[node]['column'] == 2)
   {
+    if (y_init + nodes[node].dy + 10 > {{ chartId }}_params.height)
+    {
+      y_init = 10;
+      medium = medium - 40;
+      nodes[nod].x = medium;
+    }
     console.log(nodes[node]['name']);
     nodes[node].y = y_init;
     y_init = y_init + nodes[node].dy + 10;
