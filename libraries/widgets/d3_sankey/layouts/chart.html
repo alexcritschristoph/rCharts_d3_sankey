@@ -218,17 +218,7 @@ for (var nod in nodes)
   }  
 }
 
-var y_init = 10;
-for (var node in nodes)
-{
-  if (nodes[node]['column'] == 2)
-  {
-    console.log(nodes[node]['name']);
-    nodes[nod].y = y_init;
-    y_init = y_init + nodes[node].dy + 10;
-    link.attr("d", path);
-  }
-}
+
 //Assign each node to one of three positions, if it's not already in it.
 
 var node = {{ chartId }}_svg.append("g").selectAll(".node")
